@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('thirdparty/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('thirdparty/node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('app/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -75,6 +77,16 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('thirdparty/node_modules/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('thirdparty/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+    </script>
+    <script src="{{ asset('app/main.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
